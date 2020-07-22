@@ -1,0 +1,1 @@
+It should work with any file.Try a bunch more and see what happens.Just be careful you do not blast an important file.
