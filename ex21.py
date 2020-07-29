@@ -21,7 +21,7 @@ height = subtract(78, 4)
 weight = multiply (90, 2)
 iq = divide(180, 2)
 
-print("age:"+ str(age) + "height:" + str(height) + "weight:" + str(weight) + "iq:" + str(iq))
+print("age: "+ str(age) + " height: " + str(height) + " weight: " + str(weight) + " iq: " + str(iq))
 
 # A puzzle  
 print('here is a puzzle.')
