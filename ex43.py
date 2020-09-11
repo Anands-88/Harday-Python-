@@ -1,15 +1,15 @@
-from sys import exit
-from random import randint
+from sys import exit # from module sys take exit function
+from random import randint  # 
 from textwrap import dedent
 
-class Scene(object):
+class Scene(object): #class scene 
 
     def enter(self):
         print("This scene is not yet configured.")
         print("Subclass it and implement enter().")
-        exit(0)
+        exit(0) # exit without any problem or error
 
-class Engine(object):
+class Engine(object): # class Engine
 
     def __init__(self,scene_map):
         self.scene_map = scene_map
@@ -36,7 +36,7 @@ class Death(Scene):
 
     def enter(self):
         print(Death.quips[randint(0,len(self.quips)-1)])
-        exit(0)
+        exit(1)
 
 class CentralCorridor(Scene):
 
