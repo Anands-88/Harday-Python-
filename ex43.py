@@ -36,7 +36,7 @@ class Death(Scene):
 
     def enter(self):
         print(Death.quips[randint(0,len(self.quips)-1)])
-        exit(1)
+        exit(0)
 
 class CentralCorridor(Scene):
 
@@ -135,7 +135,6 @@ class LaserWeaponArmory(Scene):
             return 'death'
 
 
-
 class TheBridge(Scene):
 
     def enter(self):
@@ -189,7 +188,7 @@ class EscapePod(Scene):
             There's 5 pods, which one do you take?
             """))
 
-        good_pod = randint(1,5)
+        good_pod = randint(1,3)
         guess = input("[pod #]> ")
 
         if int(guess) != good_pod:
@@ -209,6 +208,7 @@ class EscapePod(Scene):
                 bright star, talking  out the Gothon ship at the same.
                 """))
             return 'finished'
+            
 class Finished(Scene):
 
     def enter(self):
