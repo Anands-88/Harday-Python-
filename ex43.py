@@ -13,10 +13,10 @@ class Engine(object): # Declaring class Engine, executes after class Scene ***2
 
     def __init__(self,scene_map):  # Inilitiazing the Class object's parameter scene_map  ***14
         self.scene_map = scene_map  # creating attribute scene_map *15 (a_map = Map(Central Corridor)
-                                    # a_game = Engine(a_map)
+                                     # a_game = Engine(a_map)
     def play(self): # Creating a method play() *17
         current_scene = self.scene_map.opening_scene() # Creating variable current_scene that includes Attribute self.scene_map
-        # and a method opening_scene() * 18
+        # and a method opening_scene() * 18, self.scene_map or a_map = Map object
         last_scene = self.scene_map.next_scene('finished') # Set attribute  self.scene map and 
     # method next.scene 231 with finished argument to last_scene variable.. **24
         while current_scene != last_scene: # run this loop until current scene is not same as last scene **25
@@ -57,7 +57,7 @@ class CentralCorridor(Scene): # Declaring sub class Scene,Centralcorridor. execu
             """ )) # prints the value entered.
         action = input("Select one: shoot!, dodge!, tell joke  :")  # asks user to enter here. *27
     
-        if action == "shoot!":  # if the input of user entered is shoot, then *28
+        if action in ("shoot!", '1'):  # if the input of user entered is shoot, then *28
             print(dedent("""
                 Quick on the draw you yank out your blaster and fire 
                 it at the Gothon. His clown costume is flowing and 
@@ -70,7 +70,7 @@ class CentralCorridor(Scene): # Declaring sub class Scene,Centralcorridor. execu
                 """))  # If shoot, prints.
             return 'death' # Returns to 23. with value as 'death'
 
-        elif action == "dodge!": # if user input is dodge,
+        elif action in ("dodge!", '2'): # if user input is dodge,
             print(dedent("""
                 Like a world class boxer you dodge, weave, slip and
                 slide right as the Gotham's blaster cranks a laser
@@ -81,7 +81,7 @@ class CentralCorridor(Scene): # Declaring sub class Scene,Centralcorridor. execu
                 """)) # prints above lines
             return 'death' # Returns to 23. with value as 'death'
 
-        elif action == "tell joke": # If user input is tell joke
+        elif action in ("tell joke", '3'): # If user input is tell joke
             print(dedent("""
                 Lucky for you they made you learn Gothon insults in 
                 the academy. You tell the one Gothon joke you know:
@@ -150,7 +150,7 @@ class TheBridge(Scene): # Declaring sub class Scene,The Bridge. execute after la
             """)) # prints the line
         action = input("Select one: throw the bomb, slowly place the bomb  :") # asking user to enter thier action
 
-        if action  == "throw the bomb": # if action is same as 'throw the bomb
+        if action in ("throw the bomb", '1'): # if action is same as 'throw the bomb
             print(dedent("""
                 In a panic you throw the bomb at the group of Gothons
                 and make a leap for the door.
@@ -160,7 +160,7 @@ class TheBridge(Scene): # Declaring sub class Scene,The Bridge. execute after la
                 blow up when it goes off.
                 """)) # prints the above line
             return 'death' # return with 'death', same as 72,81, 137.
-        elif action == "slowly place the bomb": # if user action is same as'slowly place the bomb'
+        elif action in ("slowly place the bomb", '2'): # if user action is same as'slowly place the bomb'
             print(dedent("""
                 You point your blaster at the bomb under your arm and
                 the Gothons put thier hands up and starts to sweat.
@@ -194,16 +194,16 @@ class EscapePod(Scene):# Declaring sub class Scene, Escape pod, execute after th
         guess = input("[pod #]> ") # User input
 
         if int(guess) != good_pod: # if user input is not equal to good pod(randomly selected number)
-            print(dedent("""
-                You jump into pod {guess} and hit the eject button.
+            print(dedent(f"""
+                You jump into pod  {guess}  and hit the eject button.
                 The pod escapes out into the void of space, then
                 implodes as the hull ruptures, crushing your body into
                 jam jelly.
                 """)) # then print this
             return 'death' # Return to death, same as 72, 81, 137, 162.
         else: # if good pod is equal to  user input
-            print(dedent("""
-                You jump into pod {guess} and hit  eject button
+            print(dedent(f"""
+                You jump into pod  {guess}  and hit  eject button
                 The pod easily slides out into space heading to the
                 planet below. As it flies to the planet, you look
                 back  and see your ship impplode the explode like a
@@ -228,7 +228,7 @@ class Map(object): #Creating Third class Map,execute after finished (class only)
         'escape_pod': EscapePod(),
         'death': Death(),
         'finished' : Finished()
-    }
+    } # Dictionary for key values, here string and classes.
  
     def __init__(self, start_scene): # initliazing object's data atribute 'start_scene', OR PARAMETER 'start_scene *11
         self.start_scene = start_scene # creating attributes start.scene    *12 'central corridor'
@@ -249,5 +249,4 @@ a_game.play() # calling play() method on the obejct "a_game". **16
 
 
 
-
-
+ 
